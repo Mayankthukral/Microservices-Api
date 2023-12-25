@@ -1,0 +1,20 @@
+# /caps-api/k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caps-api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: caps-api
+  template:
+    metadata:
+      labels:
+        app: caps-api
+    spec:
+      containers:
+      - name: caps-api
+        image: your-docker-hub-username/caps-api:latest
+        ports:
+        - containerPort: 5003  # Adjusted port number
