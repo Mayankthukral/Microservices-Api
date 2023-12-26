@@ -1,6 +1,4 @@
-# caps/model/caps_model.py
-
-class Caps:
+class CapsModel:
     def __init__(self, cap_id, cap_name, cap_price):
         self.cap_id = cap_id
         self.cap_name = cap_name

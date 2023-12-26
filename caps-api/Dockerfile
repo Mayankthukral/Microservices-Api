@@ -1,13 +1,19 @@
-# /caps-api/Dockerfile
-FROM python:3.9-slim
+# Use an official Python runtime as a parent image
+FROM python:3.8
 
+# Set the working directory to /app
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY model/caps_model.py model/
-COPY route/caps_route.py route/
-COPY app.py .
+# Make port 5001 available to the world outside this container
+EXPOSE 5001
 
+
+
+# Run app.py when the container launches
 CMD ["python", "app.py"]
