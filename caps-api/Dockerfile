@@ -15,9 +15,6 @@ ENV MONGODB_URI="mongodb+srv://mayankthukral1810:hello123@cluster0.zyjeuqn.mongo
 
 COPY .env .env
 
-# Print the environment variable for debugging
-RUN echo $MONGODB_URI
-
 # Make port 5001 available to the world outside this container
 EXPOSE 5001
 
