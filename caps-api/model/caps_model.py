@@ -8,5 +8,6 @@ class CapsModel:
         return {
             'cap_id': self.cap_id,
             'cap_name': self.cap_name,
-            'cap_price': self.cap_price
+            'cap_price': self.cap_price,
+            '_id': str(self._id)  # Convert ObjectId to string
         }
