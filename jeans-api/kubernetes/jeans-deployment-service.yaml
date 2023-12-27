@@ -1,0 +1,33 @@
+# jeans-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jeans-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jeans
+  template:
+    metadata:
+      labels:
+        app: jeans
+    spec:
+      containers:
+        - name: jeans-api
+          image: your-registry/jeans-api:latest
+          ports:
+            - containerPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jeans-service
+spec:
+  selector:
+    app: jeans
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5002
+
