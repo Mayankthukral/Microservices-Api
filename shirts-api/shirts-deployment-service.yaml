@@ -1,0 +1,32 @@
+# shirts-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shirts-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shirts
+  template:
+    metadata:
+      labels:
+        app: shirts
+    spec:
+      containers:
+        - name: shirts-api
+          image: your-registry/shirts-api:latest
+          ports:
+            - containerPort: 5004
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shirts-service
+spec:
+  selector:
+    app: shirts
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5004
