@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mayankthukral1810
+      MONGO_INITDB_ROOT_PASSWORD: hello123
+
+  caps-api:
+    image: mayank7833/caps-api:latest
+    ports:
+      - "8081:5000"
+    depends_on:
+      - mongodb
+
+  jeans-api:
+    image: mayank7833/jeans-api:latest
+    ports:
+      - "8082:5001"
+    depends_on:
+      - mongodb
+
+  shirts-api:
+    image: mayank7833/shirts-api:latest
+    ports:
+      - "8083:5002"
+    depends_on:
+      - mongodb
+
+  trousers-api:
+    image: mayank7833/trousers-api:latest
+    ports:
+      - "8084:5003"
+    depends_on:
+      - mongodb
